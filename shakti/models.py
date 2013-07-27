@@ -61,12 +61,14 @@ class Tracker(models.Model):
 	doj = models.DateField(default=None)
 
 class Skills(models.Model):
+	uid = models.ForeignKey('PersonalInfo')
 	projects = models.TextField()
 	computer_skills = models.TextField()
 	speciality = models.TextField()
 
 
 class Qualification(models.Model):
+	uid = models.ForeignKey('PersonalInfo')
 	tenth_perc = models.CharField(max_length=10)
 	latest_degree = models.CharField(max_length=10, choices=LATEST)
 	other_desc = models.TextField(default=None,blank=True)
