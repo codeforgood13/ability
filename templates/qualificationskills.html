@@ -1,0 +1,161 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html style="" class=" js no-touch svg inlinesvg svgclippaths no-ie8compat">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+    Ability Foundation</title>
+   <link rel="stylesheet" type="text/css" href="{%static "foundation.css"%}">
+   <link rel="stylesheet" type="text/css" href="{%static "app.css"%}">
+   <script type="text/javascript" src="{%static "foundation.min.js"%}" ></script>
+   <script type="text/javascript" src="{%static "app.js"%}" ></script>
+   <link rel="stylesheet" href= "{%static "stylelogin.css"%}" >
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+   </script>
+<script>
+$(document).ready(function(){
+
+    $("#login").click(function(){
+
+        $("#showlogin").show();
+        $("#main").css({"opacity":"0.2"});
+        $("#showlogin").css({"opacity":"1"});
+    });
+        $("#closelogin").click(function(){
+
+        $("#showlogin").hide();
+        $("#main").css({"opacity":"1"});
+    });
+});
+</script>
+</head>
+<body>
+
+
+    <div class="row" id="main">
+        <div class="twelve columns">
+            
+
+            <header id="header">
+                <div class="row" style="padding-top: 10px;padding-bottom: 5px;">
+                    <div class="twelve columns">
+                        <a href="Ability.htm"><img src="{% static "logo.jpg" %}" alt="event logo"></a>
+                    </div>
+                </div>
+
+                <ul class="nav-bar" id="navigation">
+                    <li style="border-bottom-width: 0px;border-top-width: 0px;border-left-width: 0px;"><a href="Ability.htm"><img src="{% static "home.png" %}" alt=""></a></li>
+
+
+                    <li><a href="aboutus.htm">About Us</a></li>
+
+                    <li><a href="/personal/">Job Application</a></li>
+
+                    <li><a href="contactus.htm">Contact Us</a></li>
+                    <li style="float:right;"><a id="login" href="#">Login</a></li>
+                </ul>
+            </header>
+
+            <!--content starts-->
+            <div id="content" class="panel mainpanel">
+              <div class="row">
+                
+
+
+                <div class="three columns">
+                  <ul class="nav-bar vertical">
+                    <li class="active"><a href="#">Personal Information</a></li>
+                    <li><a href="#">Qualification & Skills</a></li>
+                    <li><a href="#">Disabilities</a></li>
+                  </ul>
+                </div>
+
+
+                
+
+                <div class="nine columns panel subpanel">
+                  <h5><b>Qualification & Skills</b></h5>
+
+                  <form  method="post" action=""> {% csrf_token %}
+
+                  <table class="twelve columns">  
+                    <tbody>
+                        <tr>
+                          <td>Latest Exam </td>
+                      <td><select class="eight" id="element_6" name="latest_degree">
+                      <option value="" selected="selected" class="eight">Select Last Qualified Exam</option>
+                      <option value="1" >XII</option>
+                      <option value="2" >Diploma</option>
+                      <option value="3" >U.G</option>
+                      <option value="4" >P.G</option>
+                      </select></td>
+                        </tr>
+                        <tr>
+                            <td >Percentage:</td>
+                            <td><input type="text" name="perc" class="eight"></td>
+                            
+                        </tr>                        
+
+                        <tr>
+                          <td>Projects:</td>
+                            <td><textarea id="element_3" name="project" class="textarea" size="400"></textarea> </td>
+                        </tr>
+
+                        <tr>
+                          <td>Computer Skills:</td>
+                            <td><textarea id="element_4" name="computer_skills" class="textarea" size="400"></textarea>  </td>
+                        </tr>
+
+
+                        <tr>
+                          <td>Speciality:</td>
+                            <td><textarea id="element_5" name="speciality" class="textarea" size="400"></textarea>   </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+    <input style="float:right;" class="button" type="submit" value="Next"/>
+    </form> 
+    
+  </div>
+                </div>
+
+              </div>
+            </div>
+            
+
+            <!--content ends-->
+            <div style="text-align:center;font-weight:bold;">
+                Copyright@teamno13.codeforgoodchallenge  | JP Morgan Mumbai.
+            </div>
+        </div>
+    </div>
+
+    <div id="showlogin" style="display:none;width:700px;height:500px;background-color:white;border:2px solid black;position:absolute;left:25%;top:15%;border-radius:5%;opacity:1;">
+    <span id="closelogin" style="font-size:3em;border-radius:50%;float:right;border:3px solid white;padding:1%;cursor:pointer;background-color:black;color:white;font-weight:bold;">X</span>
+    <div style="padding:10%;text-align:center;opacity:1;margin-left:20%;">
+    
+  <section class="container">
+    <div class="login" style="width:400px">
+      <h4 style="text-align:left;">Login to Web App</h4>
+      <form method="post" action="Application.htm">
+        <p><input type="text" name="login" value="" placeholder="Username or Email"  style="width:150px"></p>
+        <p><input type="password" name="password" value="" placeholder="Password" style="width:150px"></p>
+        <p class="remember_me">
+          <label style="text-align:left;">
+            <input type="checkbox" name="remember_me" id="remember_me">
+            Remember me on this computer
+          </label>
+        </p>
+        <p class="submit" style="text-align:left;"><input type="submit" name="commit" value="Login"></p>
+      </form>
+    </div>
+  </section>
+    </div>
+
+</div>
+
+
+</body>
+</html>

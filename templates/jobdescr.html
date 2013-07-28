@@ -1,0 +1,184 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html style="" class=" js no-touch svg inlinesvg svgclippaths no-ie8compat">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+    Ability Foundation</title>
+   <link rel="stylesheet" type="text/css" href="{%static "foundation.css"%}">
+   <link rel="stylesheet" type="text/css" href="{%static "app.css"%}">
+   <script type="text/javascript" src="{%static "foundation.min.js"%}" ></script>
+   <script type="text/javascript" src="{%static "app.js"%}" ></script>
+   <link rel="stylesheet" href= "{%static "stylelogin.css"%}" >
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+   </script>
+<script>
+$(document).ready(function(){
+
+    $("#login").click(function(){
+
+        $("#showlogin").show();
+        $("#main").css({"opacity":"0.2"});
+        $("#showlogin").css({"opacity":"1"});
+    });
+        $("#closelogin").click(function(){
+
+        $("#showlogin").hide();
+        $("#main").css({"opacity":"1"});
+    });
+});
+</script>
+</head>
+<body>
+
+
+    <div class="row" id="main">
+        <div class="twelve columns">
+            
+
+            <header id="header">
+                <div class="row" style="padding-top: 10px;padding-bottom: 5px;">
+                    <div class="twelve columns">
+                        <a href="Ability.htm"><img src="{% static "logo.jpg" %}" alt="event logo"></a>
+                    </div>
+                </div>
+
+                <ul class="nav-bar" id="navigation">
+                    <li style="border-bottom-width: 0px;border-top-width: 0px;border-left-width: 0px;"><a href="Ability.htm"><img src="{% static "home.png" %}" alt=""></a></li>
+
+
+                    <li><a href="aboutus.htm">About Us</a></li>
+
+                    <li><a href="/personal/">Job Application</a></li>
+
+                    <li><a href="contactus.htm">Contact Us</a></li>
+                    <li style="float:right;"><a id="login" href="#">Login</a></li>
+                </ul>
+            </header>
+
+            <!--content starts-->
+
+            <div id="content" class="panel mainpanel">
+              <div class="row">
+                
+
+
+                <div class="three columns">
+                  <ul class="nav-bar vertical">
+                    <li class="active"><a href="employee%20form.htm">Personal Information</a></li>
+                    <li><a href="qualificationskills.html">Qualification & Skills</a></li>
+                    <li><a href="disability.html">Disabilities</a></li>
+                  </ul>
+                </div>
+
+
+                
+
+                <div class="nine columns panel subpanel">
+                  <h5><b>Job Description</b></h5>
+
+                  <form  method="post" action="/job_descr/"> {% csrf_token%}
+
+                  <table class="twelve columns">  
+                    <tbody>
+                        <tr>
+                            <td>Available Post</td>
+                            <td>
+                              <input id="element_1" name="post" class="element text medium" type="text" maxlength="255" value=""/> 
+                           </td> 
+                        </tr>
+                        <tr>
+                          <td>Location </td>
+                            <td ><select class="element select medium" id="element_4" name="city">
+                            <option value="" selected="selected"></option>
+<option value="1" > Bangalore</option>
+<option value="2" > Kolkatta</option>
+<option value="3" > Bombay</option>
+<option value="4" > Gandhi Nagar</option>
+
+    </select></td>
+
+                  </tr>
+
+                        <tr>
+                          <td>Qualification :</td>
+                            <td ><input id="element_2" name="quali" class="element text medium" type="text" maxlength="255" value=""/></td>
+                        </tr>
+
+                        <tr>
+                          <td>Job suited for :</td>
+                            <td ><input id="element_5_1" name="o" class="element checkbox" type="checkbox" value="1" />
+<label class="choice" for="element_5_1" name='ol'>Orthopedic impaired</label>
+<input id="element_5_2" name="b" class="element checkbox" type="checkbox" value="1" name='b' />
+<label class="choice" for="element_5_2">Visually impaired</label>
+<input id="element_5_3" name="h" class="element checkbox" type="checkbox" value="1" name='h'/>
+<label class="choice" for="element_5_3">Hearing Impaired</label></td>
+                        </tr>
+
+
+
+
+
+                        <tr>
+                          <td>Time of work :</td>
+                            <td ><input id="element_6_1" name="time" class="element radio" type="radio" value="1" />
+<label class="choice" for="element_6_1">Morning Shift</label>
+<input id="element_6_2" name="time" class="element radio" type="radio" value="2" />
+<label class="choice" for="element_6_2">Night Shift</label></td>
+                        </tr>
+
+
+
+                         <tr>
+                          <td>Job Description</td>
+                            <td ><textarea id="element_3" name="descr" class="element textarea medium"></textarea>
+                        </tr>
+
+                    </tbody>
+                </table>
+                  
+
+    <input style="float:right;" class="button" type="submit" value="Submit"/>
+    </form> 
+    
+  </div>
+                </div>
+
+              </div>
+            </div>
+            
+            <!--content ends-->
+            <div style="text-align:center;font-weight:bold;">
+                Copyright@teamno13.codeforgoodchallenge  | JP Morgan Mumbai.
+            </div>
+        </div>
+    </div>
+
+    <div id="showlogin" style="display:none;width:700px;height:500px;background-color:white;border:2px solid black;position:absolute;left:25%;top:15%;border-radius:5%;opacity:1;">
+    <span id="closelogin" style="font-size:3em;border-radius:50%;float:right;border:3px solid white;padding:1%;cursor:pointer;background-color:black;color:white;font-weight:bold;">X</span>
+    <div style="padding:10%;text-align:center;opacity:1;margin-left:20%;">
+    
+  <section class="container">
+    <div class="login" style="width:400px">
+      <h4 style="text-align:left;">Login to Web App</h4>
+      <form method="post" action="Application.htm">
+        <p><input type="text" name="login" value="" placeholder="Username or Email"  style="width:150px"></p>
+        <p><input type="password" name="password" value="" placeholder="Password" style="width:150px"></p>
+        <p class="remember_me">
+          <label style="text-align:left;">
+            <input type="checkbox" name="remember_me" id="remember_me">
+            Remember me on this computer
+          </label>
+        </p>
+        <p class="submit" style="text-align:left;"><input type="submit" name="commit" value="Login"></p>
+      </form>
+    </div>
+  </section>
+    </div>
+
+</div>
+
+
+</body>
+</html>

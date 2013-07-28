@@ -1,0 +1,135 @@
+/* Artfully masterminded by ZURB  */
+
+body { 
+/*background: url(background.jpg) no-repeat center center fixed; */
+background-color: #CCCCFF;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+
+.imgborder{
+-webkit-box-shadow:  2px 3px 15px 4px rgba(0, 102, 204, 0.5);
+        
+        box-shadow:  2px 3px 15px 4px rgba(0, 102, 204, 0.5);
+}
+
+/* MAIN PANEL8*/
+
+.panel.mainpanel{background-color: rgba(242, 242, 242,0.94);
+                  -webkit-box-shadow:  2px 3px 25px 3px rgba(0, 102, 204, 0.5);
+                  box-shadow:  2px 3px 25px 3px rgba(0, 102, 204, 0.5);
+                  -webkit-border-radius: 0px 0px 10px 10px;
+                   border-radius: 0px 0px 10px 10px;}
+
+
+.panel.subpanel{background-color: rgba(242, 242, 242,0.5);
+                  -webkit-box-shadow: inset 3px 3px 25px 2px rgba(0, 102, 204, 0.3);
+                  box-shadow: inset 3px 3px 25px 2px rgba(0, 102, 204, 0.3);
+                  -webkit-border-radius: 5px;
+                  border-radius: 5px;}
+
+
+
+/*NAV BAR CSS
+#navigation{
+
+
+}*/
+
+/*Armed forces css*/
+.army{height:192px;}
+.army dd a, .army li a { color: #6f6f6f; display: block; font-size: 14px; height: 155px; line-height: 40px; padding: 0px 5px; }
+
+
+
+/*EVENTS CSS*/
+#eventimg{
+padding-left:10px;
+padding-top:10px;
+box-shadow: 10px 10px 5px #888888;
+}
+
+#eventthumb1,#eventthumb2{
+padding-left:1px;
+padding-right:1px;
+padding:0px;
+}
+.eThumb{
+padding:0px;
+position:relative;
+display: block;
+margin-left: auto;
+margin-right: auto;
+border-style: solid;
+opacity:0.7;
+border-color: #ffffff;
+
+-moz-box-shadow:  0px 0px 3px 2px rgba(0, 0, 0, 0.4); 
+-webkit-box-shadow:  0px 0px 3px 2px rgba(0, 0, 0, 0.4);
+-o-box-shadow:  0px 0px 3px 2px rgba(0, 0, 0, 0.4);   
+box-shadow:  0px 0px 3px 2px rgba(0, 0, 0, 0.4);
+
+transition: box-shadow 500ms;
+-moz-transition: box-shadow 500ms; /* Firefox 4 */
+-webkit-transition: box-shadow 500ms; /* Safari and Chrome */
+-o-transition: box-shadow 500ms; /* Opera */
+}
+.eThumb.selected{opacity:1;}
+
+.eThumb:hover{-moz-box-shadow:  0px 0px 20px 9px rgba(0, 102, 204, 0.5); 
+-webkit-box-shadow:  0px 0px 20px 9px rgba(0, 102, 204, 0.5);
+-o-box-shadow:  0px 0px 20px 9px rgba(0, 102, 204, 0.5);   
+box-shadow:  0px 0px 20px 9px rgba(0, 102, 204, 0.5);}
+
+.eThumbP{margin-bottom:0px;text-align:center;cursor: default;}
+
+.hPage{opacity:1;}
+
+.hPage:hover{
+-moz-box-shadow:  0px 0px 20px 9px rgba(0, 102, 204, 0.5); 
+-webkit-box-shadow:  0px 0px 20px 9px rgba(0, 102, 204, 0.5);
+-o-box-shadow:  0px 0px 20px 9px rgba(0, 102, 204, 0.5);   
+box-shadow:  0px 0px 20px 9px rgba(0, 102, 204, 0.5);}
+
+
+/*ABOUT CSS*/
+#pesitMRD{
+display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+
+
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: Page Name 1
+:: Page Name 2
+*/
+
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+
+
+
+/* -----------------------------------------
+   Page Name 1
+----------------------------------------- */
+
+
+
+
+/* -----------------------------------------
+   Page Name 2
+----------------------------------------- */
+
+

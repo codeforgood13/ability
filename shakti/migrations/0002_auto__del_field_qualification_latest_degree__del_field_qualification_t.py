@@ -8,14 +8,32 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
+        # Deleting field 'Qualification.latest_degree'
+        db.delete_column(u'shakti_qualification', 'latest_degree')
 
-        # Changing field 'PersonalInfo.email'
-        db.alter_column(u'shakti_personalinfo', 'email', self.gf('django.db.models.fields.EmailField')(max_length=30))
+        # Deleting field 'Qualification.tenth_perc'
+        db.delete_column(u'shakti_qualification', 'tenth_perc')
+
+        # Adding field 'Qualification.eduIndex'
+        db.add_column(u'shakti_qualification', 'eduIndex',
+                      self.gf('django.db.models.fields.IntegerField')(default=0, max_length=10),
+                      keep_default=False)
+
 
     def backwards(self, orm):
+        # Adding field 'Qualification.latest_degree'
+        db.add_column(u'shakti_qualification', 'latest_degree',
+                      self.gf('django.db.models.fields.CharField')(default=0, max_length=10),
+                      keep_default=False)
 
-        # Changing field 'PersonalInfo.email'
-        db.alter_column(u'shakti_personalinfo', 'email', self.gf('django.db.models.fields.EmailField')(max_length=10))
+        # Adding field 'Qualification.tenth_perc'
+        db.add_column(u'shakti_qualification', 'tenth_perc',
+                      self.gf('django.db.models.fields.CharField')(default=0, max_length=10),
+                      keep_default=False)
+
+        # Deleting field 'Qualification.eduIndex'
+        db.delete_column(u'shakti_qualification', 'eduIndex')
+
 
     models = {
         u'shakti.constraints': {
@@ -49,6 +67,7 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'lhand_amputee': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             'lleg_amputee': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
+            'orthopedic_aid': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'rhand_amputee': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             'rleg_amputee': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             'uid': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['shakti.PersonalInfo']"})
@@ -61,29 +80,30 @@ class Migration(SchemaMigration):
         },
         u'shakti.personalinfo': {
             'Meta': {'object_name': 'PersonalInfo'},
-            'address': ('django.db.models.fields.TextField', [], {}),
             'code': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             'dob': ('django.db.models.fields.DateField', [], {}),
             'email': ('django.db.models.fields.EmailField', [], {'default': "'testuser@mail.com'", 'max_length': '30'}),
-            'gender': ('django.db.models.fields.CharField', [], {'max_length': '5'}),
+            'gender': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'location': ('django.db.models.fields.TextField', [], {}),
             'maritial_status': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             'mobile_num': ('django.db.models.fields.CharField', [], {'default': "'+9129089998'", 'max_length': '15'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '40'})
         },
         u'shakti.qualification': {
             'Meta': {'object_name': 'Qualification'},
+            'eduIndex': ('django.db.models.fields.IntegerField', [], {'max_length': '10'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'latest_degree': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             'other_desc': ('django.db.models.fields.TextField', [], {'default': 'None', 'blank': 'True'}),
-            'tenth_perc': ('django.db.models.fields.CharField', [], {'max_length': '10'})
+            'uid': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['shakti.PersonalInfo']"})
         },
         u'shakti.skills': {
             'Meta': {'object_name': 'Skills'},
             'computer_skills': ('django.db.models.fields.TextField', [], {}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'projects': ('django.db.models.fields.TextField', [], {}),
-            'speciality': ('django.db.models.fields.TextField', [], {})
+            'speciality': ('django.db.models.fields.TextField', [], {}),
+            'uid': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['shakti.PersonalInfo']"})
         },
         u'shakti.tracker': {
             'Meta': {'object_name': 'Tracker'},

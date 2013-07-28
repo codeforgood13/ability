@@ -1,0 +1,184 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html style="" class=" js no-touch svg inlinesvg svgclippaths no-ie8compat">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+    Ability Foundation</title>
+   <link rel="stylesheet" type="text/css" href="{%static "foundation.css"%}">
+   <link rel="stylesheet" type="text/css" href="{%static "app.css"%}">
+   <script type="text/javascript" src="{%static "foundation.min.js"%}" ></script>
+   <script type="text/javascript" src="{%static "app.js"%}" ></script>
+   <link rel="stylesheet" href= "{%static "stylelogin.css"%}" >
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+   </script>
+<script>
+$(document).ready(function(){
+
+    $("#login").click(function(){
+
+        $("#showlogin").show();
+        $("#main").css({"opacity":"0.2"});
+        $("#showlogin").css({"opacity":"1"});
+    });
+        $("#closelogin").click(function(){
+
+        $("#showlogin").hide();
+        $("#main").css({"opacity":"1"});
+    });
+});
+</script>
+</head>
+<body>
+
+
+    <div class="row" id="main">
+        <div class="twelve columns">
+            
+
+            <header id="header">
+                <div class="row" style="padding-top: 10px;padding-bottom: 5px;">
+                    <div class="twelve columns">
+                        <a href="Ability.htm"><img src="{% static "logo.jpg" %}" alt="event logo"></a>
+                    </div>
+                </div>
+
+                <ul class="nav-bar" id="navigation">
+                    <li style="border-bottom-width: 0px;border-top-width: 0px;border-left-width: 0px;"><a href="Ability.htm"><img src="{% static "home.png" %}" alt=""></a></li>
+
+
+                    <li><a href="aboutus.htm">About Us</a></li>
+
+                    <li><a href="/personal/">Job Application</a></li>
+
+                    <li><a href="contactus.htm">Contact Us</a></li>
+                    <li style="float:right;"><a id="login" href="#">Login</a></li>
+                </ul>
+            </header>
+
+            <!--content starts-->
+            <div id="content" class="panel mainpanel">
+              <div class="row">
+                <div class="three columns">
+                  <ul class="nav-bar vertical">
+                    <li class="active"><a href="#">Personal Information</a></li>
+                    <li><a href="#">Qualification & Skills</a></li>
+                    <li><a href="#">Disabilities</a></li>
+                  </ul>
+                </div>
+
+
+                <form  method="post" action="/personal/"> {% csrf_token %}
+                <div class="nine columns panel subpanel">
+                  <div class="row">
+                    <h5><b>Personal Information</b></h5>
+                  <div class="two mobile-one columns">
+                    <label class="right inline">Name:</label>
+                  </div>
+                  <div class="ten mobile-three columns">
+                    <input type="text" name='name' class="eight">
+                  </div>
+                  <div class="two mobile-one columns">
+                    <label class="right inline">Date of Birth</label>
+                  </div>
+                  <div class="ten mobile-three columns">
+                    <input type="date" class="eight" name='dob'>
+                  </div>
+                  <div class="two mobile-one columns">
+                    <label class="right inline" >Gender:</label>
+                  </div>
+                  <div class="ten mobile-three columns">
+                    <label for="radio1">
+                      <input name="gender" type="radio" id="radio1" value="male" >
+                       Male</label>
+                      <label for="radio2">
+                        <input name="gender" type="radio" id="radio2" value="female" > Female</label>
+                  </div>
+
+
+                </div>
+                <div class="two mobile-one columns">
+                    <label class="right inline">Location:</label>
+                  </div>
+                  <div class="ten mobile-three columns">
+                    
+                      <textarea id="element_3" name="location" class="textarea eight"></textarea> 
+                  </div>
+
+
+                  
+                
+                    <div class="two mobile-one columns">
+                    <label class="right inline">email_id:</label>
+                  </div>
+
+    <div class="ten mobile-three columns">
+      <input id="element_4" name="email"  type="text" class="eight" maxlength="255" value=""/> 
+    </div>
+
+
+                    <div class="two mobile-one columns">
+                    <label class="right inline">Phone No:</label>
+                  </div>
+
+    <div class="ten mobile-three columns">
+      <input id="element_5" name="mobile_number" class="eight" type="text" maxlength="255" value=""/> 
+    </div>
+
+                    <div class="two mobile-one columns">
+                      <label class="description" for="element_7">Marital status </label>
+                    </div>
+    <div class="ten mobile-three columns">
+      <label for="radio3">
+
+                      <input name="maritial_status" type="radio" id="radio3" value="yes" >
+                       Married</label>
+                       <label for="radio4">
+                        <input name="maritial_status" type="radio" id="radio4" value="no"> Unmarried</label>
+    </div>  
+
+    <input style="float:right;" class="button" type="submit" value="Next"/>
+    </form> 
+    
+  </div>
+                </div>
+
+              </div>
+            </div>
+            
+
+            <!--content ends-->
+            <div style="text-align:center;font-weight:bold;">
+                Copyright@teamno13.codeforgoodchallenge  | JP Morgan Mumbai.
+            </div>
+        </div>
+    </div>
+
+    <div id="showlogin" style="display:none;width:700px;height:500px;background-color:white;border:2px solid black;position:absolute;left:25%;top:15%;border-radius:5%;opacity:1;">
+    <span id="closelogin" style="font-size:3em;border-radius:50%;float:right;border:3px solid white;padding:1%;cursor:pointer;background-color:black;color:white;font-weight:bold;">X</span>
+    <div style="padding:10%;text-align:center;opacity:1;margin-left:20%;">
+    
+  <section class="container">
+    <div class="login" style="width:400px">
+      <h4 style="text-align:left;">Login to Web App</h4>
+      <form method="post" action="Application.htm">
+        <p><input type="text" name="login" value="" placeholder="Username or Email"  style="width:150px"></p>
+        <p><input type="password" name="password" value="" placeholder="Password" style="width:150px"></p>
+        <p class="remember_me">
+          <label style="text-align:left;">
+            <input type="checkbox" name="remember_me" id="remember_me">
+            Remember me on this computer
+          </label>
+        </p>
+        <p class="submit" style="text-align:left;"><input type="submit" name="commit" value="Login"></p>
+      </form>
+    </div>
+  </section>
+    </div>
+
+</div>
+
+
+</body>
+</html>

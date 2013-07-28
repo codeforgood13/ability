@@ -1,0 +1,168 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html style="" class=" js no-touch svg inlinesvg svgclippaths no-ie8compat">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+    Ability Foundation</title>
+   <link rel="stylesheet" type="text/css" href="{%static "foundation.css"%}">
+   <link rel="stylesheet" type="text/css" href="{%static "app.css"%}">
+   <script type="text/javascript" src="{%static "foundation.min.js"%}" ></script>
+   <script type="text/javascript" src="{%static "app.js"%}" ></script>
+   <link rel="stylesheet" href= "{%static "stylelogin.css"%}" >
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+   </script>
+   <script>
+$(document).ready(function(){
+
+    $("#login").click(function(){
+
+        $("#showlogin").show();
+        $("#main").css({"opacity":"0.2"});
+        $("#showlogin").css({"opacity":"1"});
+    });
+        $("#closelogin").click(function(){
+
+        $("#showlogin").hide();
+        $("#main").css({"opacity":"1"});
+    });
+
+            $("#element_4_1").click(function(){
+        $("#showreq").show();
+    });
+            $("#element_4_2").click(function(){
+        $("#showreq").hide();
+    });
+            
+
+});
+</script>
+</head>
+<body>
+
+
+    <div class="row" id="main">
+        <div class="twelve columns">
+            
+
+            <header id="header">
+                <div class="row" style="padding-top: 10px;padding-bottom: 5px;">
+                    <div class="twelve columns">
+                        <a href="Ability.htm"><img src="{% static "logo.jpg" %}" alt="event logo"></a>
+                    </div>
+                </div>
+
+                <ul class="nav-bar" id="navigation">
+                    <li style="border-bottom-width: 0px;border-top-width: 0px;border-left-width: 0px;"><a href="Ability.htm"><img src="{% static "home.png" %}" alt=""></a></li>
+
+
+                    <li><a href="aboutus.htm">About Us</a></li>
+
+                    <li><a href="/personal/">Job Application</a></li>
+
+                    <li><a href="contactus.htm">Contact Us</a></li>
+                    <li style="float:right;"><a id="login" href="#">Login</a></li>
+                </ul>
+            </header>
+
+            <!--content starts-->
+            <div id="content" class="panel mainpanel">
+              <div class="row">
+                
+
+
+                <div class="three columns">
+                  <ul class="nav-bar vertical">
+                    <li class="active"><a href="employee%20form.htm">Personal Information</a></li>
+                    <li><a href="qualificationskills.html">Qualification & Skills</a></li>
+                    <li><a href="disability.html">Disabilities</a></li>
+                  </ul>
+                </div>
+
+
+                
+
+                <div class="nine columns panel subpanel">
+                  <h5><b>Your comfort zones</b></h5>
+
+                  <form  method="post" action=""> {% csrf_token %}
+
+                  <table class="twelve columns">  
+                    <tbody>
+                        <tr>
+                            <td>Do you agree to work in night shifts ? </td>
+                            <td>
+                             <input id="element_2_1" name="night_shift" class="element radio" type="radio" value="1" />
+<label class="choice" for="element_2_1">Yes</label>
+<input id="element_2_2" name="night_shift" class="element radio" type="radio" value="2" />
+<label class="choice" for="element_2_2">No</label>
+                           </td> 
+                        </tr>
+                        <tr>
+                          <td>Are you comfortable with any possible relocation </td>
+                            <td ><input id="element_3_1" name="relocated" class="element radio" type="radio" value="1" />
+<label class="choice" for="element_3_1">Yes</label>
+<input id="element_3_2" name="relocated" class="element radio" type="radio" value="2" />
+<label class="choice" for="element_3_2">No</label></td>
+                        </tr>
+
+                        <tr>
+                          <td>Do you require any special assistance ? </td>
+                            <td ><input id="element_4_1" name="element_4" class="element radio" type="radio" value="1" />
+<label class="choice" for="element_4_1">Yes</label>
+<input id="element_4_2" name="element_4" class="element radio" type="radio" id="noreq" value="2" />
+<label class="choice" for="element_4_2">No</label></tds>
+
+                  <td><input type="text" style="width:100x;display:none;" id="showreq" placeholder="Specify"/>
+                    </td>
+                  </tr>
+
+                        
+
+                    </tbody>
+                </table>
+                  
+
+    <input style="float:right;" class="button" type="submit" value="Submit"/>
+    </form> 
+    
+  </div>
+                </div>
+
+              </div>
+            </div>
+            <!--content ends-->
+            <div style="text-align:center;font-weight:bold;">
+                Copyright@teamno13.codeforgoodchallenge  | JP Morgan Mumbai.
+            </div>
+        </div>
+    </div>
+
+    <div id="showlogin" style="display:none;width:700px;height:500px;background-color:white;border:2px solid black;position:absolute;left:25%;top:15%;border-radius:5%;opacity:1;">
+    <span id="closelogin" style="font-size:3em;border-radius:50%;float:right;border:3px solid white;padding:1%;cursor:pointer;background-color:black;color:white;font-weight:bold;">X</span>
+    <div style="padding:10%;text-align:center;opacity:1;margin-left:20%;">
+    
+  <section class="container">
+    <div class="login" style="width:400px">
+      <h4 style="text-align:left;">Login to Web App</h4>
+      <form method="post" action="Application.htm">
+        <p><input type="text" name="login" value="" placeholder="Username or Email"  style="width:150px"></p>
+        <p><input type="password" name="password" value="" placeholder="Password" style="width:150px"></p>
+        <p class="remember_me">
+          <label style="text-align:left;">
+            <input type="checkbox" name="remember_me" id="remember_me">
+            Remember me on this computer
+          </label>
+        </p>
+        <p class="submit" style="text-align:left;"><input type="submit" name="commit" value="Login"></p>
+      </form>
+    </div>
+  </section>
+    </div>
+
+</div>
+
+
+</body>
+</html>

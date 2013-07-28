@@ -14,9 +14,9 @@ class Migration(SchemaMigration):
             ('code', self.gf('django.db.models.fields.CharField')(max_length=10)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=40)),
             ('dob', self.gf('django.db.models.fields.DateField')()),
-            ('gender', self.gf('django.db.models.fields.CharField')(max_length=5)),
-            ('address', self.gf('django.db.models.fields.TextField')()),
-            ('email', self.gf('django.db.models.fields.EmailField')(default='testuser@mail.com', max_length=10)),
+            ('gender', self.gf('django.db.models.fields.CharField')(max_length=10)),
+            ('location', self.gf('django.db.models.fields.TextField')()),
+            ('email', self.gf('django.db.models.fields.EmailField')(default='testuser@mail.com', max_length=30)),
             ('mobile_num', self.gf('django.db.models.fields.CharField')(default='+9129089998', max_length=15)),
             ('maritial_status', self.gf('django.db.models.fields.CharField')(max_length=10)),
         ))
@@ -35,6 +35,7 @@ class Migration(SchemaMigration):
         # Adding model 'Skills'
         db.create_table(u'shakti_skills', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('uid', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['shakti.PersonalInfo'])),
             ('projects', self.gf('django.db.models.fields.TextField')()),
             ('computer_skills', self.gf('django.db.models.fields.TextField')()),
             ('speciality', self.gf('django.db.models.fields.TextField')()),
@@ -44,6 +45,7 @@ class Migration(SchemaMigration):
         # Adding model 'Qualification'
         db.create_table(u'shakti_qualification', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('uid', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['shakti.PersonalInfo'])),
             ('tenth_perc', self.gf('django.db.models.fields.CharField')(max_length=10)),
             ('latest_degree', self.gf('django.db.models.fields.CharField')(max_length=10)),
             ('other_desc', self.gf('django.db.models.fields.TextField')(default=None, blank=True)),
@@ -69,6 +71,7 @@ class Migration(SchemaMigration):
             ('lleg_amputee', self.gf('django.db.models.fields.CharField')(max_length=10)),
             ('rhand_amputee', self.gf('django.db.models.fields.CharField')(max_length=10)),
             ('lhand_amputee', self.gf('django.db.models.fields.CharField')(max_length=10)),
+            ('orthopedic_aid', self.gf('django.db.models.fields.CharField')(max_length=50)),
         ))
         db.send_create_signal(u'shakti', ['Orthopedic'])
 
@@ -174,6 +177,7 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'lhand_amputee': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             'lleg_amputee': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
+            'orthopedic_aid': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'rhand_amputee': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             'rleg_amputee': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             'uid': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['shakti.PersonalInfo']"})
@@ -186,12 +190,12 @@ class Migration(SchemaMigration):
         },
         u'shakti.personalinfo': {
             'Meta': {'object_name': 'PersonalInfo'},
-            'address': ('django.db.models.fields.TextField', [], {}),
             'code': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             'dob': ('django.db.models.fields.DateField', [], {}),
-            'email': ('django.db.models.fields.EmailField', [], {'default': "'testuser@mail.com'", 'max_length': '10'}),
-            'gender': ('django.db.models.fields.CharField', [], {'max_length': '5'}),
+            'email': ('django.db.models.fields.EmailField', [], {'default': "'testuser@mail.com'", 'max_length': '30'}),
+            'gender': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'location': ('django.db.models.fields.TextField', [], {}),
             'maritial_status': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             'mobile_num': ('django.db.models.fields.CharField', [], {'default': "'+9129089998'", 'max_length': '15'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '40'})
@@ -201,14 +205,16 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'latest_degree': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             'other_desc': ('django.db.models.fields.TextField', [], {'default': 'None', 'blank': 'True'}),
-            'tenth_perc': ('django.db.models.fields.CharField', [], {'max_length': '10'})
+            'tenth_perc': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
+            'uid': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['shakti.PersonalInfo']"})
         },
         u'shakti.skills': {
             'Meta': {'object_name': 'Skills'},
             'computer_skills': ('django.db.models.fields.TextField', [], {}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'projects': ('django.db.models.fields.TextField', [], {}),
-            'speciality': ('django.db.models.fields.TextField', [], {})
+            'speciality': ('django.db.models.fields.TextField', [], {}),
+            'uid': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['shakti.PersonalInfo']"})
         },
         u'shakti.tracker': {
             'Meta': {'object_name': 'Tracker'},
